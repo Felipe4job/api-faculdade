@@ -1,8 +1,14 @@
 import express from "express";
-import cadastrarVendedores from "../controler/cadastrarVendedores.mjs";
+import handleVendedores from "../controler/handleVendedores.mjs";
 
-const router = express.Router();
+export default function router(app) {
+  //   const router = express.Router();
 
-router.post("/vendedores", cadastrarVendedores.cadastrarVendedor);
+  //   router.post("/vendedores", handleVendedores.cadastrarVendedor);
 
-export default router;
+  app.route("/vendedor").post(express.json(), handleVendedores.postVendedores);
+
+  app
+    .route("/vendedor/get")
+    .get(express.json(), handleVendedores.getVendedores);
+}
