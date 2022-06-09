@@ -1,14 +1,15 @@
 import express from "express";
-import handleVendedores from "../controler/handleVendedores.mjs";
+import vendedoresRoutes from "./vendedoresRoutes.mjs";
+import clientesRoutes from "./clientesRoutes.mjs";
+import produtosRoutes from "./produtosRoutes.mjs";
+import carrinhosRoutes from "./carrinhosRoutes.mjs";
 
 export default function router(app) {
-  //   const router = express.Router();
-
-  //   router.post("/vendedores", handleVendedores.cadastrarVendedor);
-
-  app.route("/vendedor").post(express.json(), handleVendedores.postVendedores);
-
-  app
-    .route("/vendedor/get")
-    .get(express.json(), handleVendedores.getVendedores);
+  app.use(
+    express.json(),
+    vendedoresRoutes,
+    clientesRoutes,
+    produtosRoutes,
+    carrinhosRoutes
+  );
 }

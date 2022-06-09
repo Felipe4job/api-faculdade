@@ -1,9 +1,13 @@
 import mongoose from "mongoose";
 
-const clienteSchema = new mongoose.Schema({
-  id: { type: String },
-  nome: { type: String, required: true },
-});
+const clienteSchema = new mongoose.Schema(
+  {
+    nome: { type: String, required: true },
+  },
+  {
+    versionKey: false,
+  }
+);
 
 const clientes = mongoose.model("clientes", clienteSchema);
 

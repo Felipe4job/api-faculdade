@@ -1,9 +1,13 @@
 import mongoose from "mongoose";
 
-const vendedorSchema = new mongoose.Schema({
-  id: { type: String },
-  nome: { type: String, required: true },
-});
+const vendedorSchema = new mongoose.Schema(
+  {
+    nome: { type: String, required: true },
+  },
+  {
+    versionKey: false,
+  }
+);
 
 const vendedores = mongoose.model("vendedores", vendedorSchema);
 
